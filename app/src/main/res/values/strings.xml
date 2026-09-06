@@ -1,0 +1,257 @@
+<resources>
+    <string name="app_name">My Planner</string>
+    <string name="notification_channel_name">Напоминания</string>
+    <string name="notification_channel_desc">Напоминания о делах в планировщике</string>
+
+    <!-- Общие -->
+    <string name="common_done">Готово</string>
+    <string name="common_cancel">Отмена</string>
+    <string name="common_add">Добавить</string>
+    <string name="common_delete">Удалить</string>
+    <string name="common_save">Сохранить</string>
+    <string name="common_back">Назад</string>
+    <string name="common_edit">Редактировать</string>
+    <string name="common_today">Сегодня</string>
+    <string name="label_note_optional">Заметка (необязательно)</string>
+    <string name="label_category">Категория</string>
+    <string name="label_date">Дата</string>
+    <string name="label_start_time">Время начала</string>
+    <string name="label_duration">Длительность</string>
+    <string name="label_name">Название</string>
+
+    <!-- Список дел -->
+    <string name="backlog_nav_label">Список дел</string>
+    <string name="backlog_fab_add_desc">Добавить дело в список</string>
+    <string name="backlog_title">Список дел</string>
+    <string name="backlog_subtitle">Дела без точного времени — как семена, ждущие, когда их посадят в план на день</string>
+    <string name="backlog_empty_title">Пока пусто. Добавьте дело, для которого пока не знаете точное время.</string>
+    <string name="backlog_seed_not_planted_desc">Ещё не посажено</string>
+    <string name="backlog_action_add_to_plan">В план</string>
+    <string name="backlog_add_task_title">Новое дело в список</string>
+    <string name="backlog_label_what_to_do">Что нужно сделать</string>
+    <string name="backlog_label_usual_duration">Обычная длительность</string>
+    <string name="backlog_action_add_to_list">Добавить в список</string>
+    <string name="backlog_plant_title">Посадить в план</string>
+    <string name="backlog_action_plant_to_day">Посадить в план на день</string>
+
+    <!-- Финансы -->
+    <string name="finance_nav_label">Финансы</string>
+    <string name="finance_title">Финансы</string>
+    <string name="finance_tab_accounts">Счета</string>
+    <string name="finance_tab_expenses">Траты</string>
+    <string name="finance_tab_savings">Копилки</string>
+    <string name="finance_fab_add_desc">Добавить</string>
+    <string name="finance_total_label">Всего</string>
+    <string name="finance_accounts_label">Счета</string>
+    <string name="finance_delete_account_desc">Удалить счёт</string>
+    <string name="finance_recent_transactions">Последние операции</string>
+    <string name="finance_empty_transactions">Пока нет операций — добавьте первую трату или доход</string>
+    <string name="finance_spent_this_month">Траты за месяц</string>
+    <string name="finance_earned_this_month">Доходы за месяц</string>
+    <string name="finance_expense_label">Трата</string>
+    <string name="finance_income_label">Доход</string>
+    <string name="finance_delete_transaction_desc">Удалить операцию</string>
+    <string name="finance_empty_goals">Пока нет копилок. Добавьте цель — например, на новый телефон — и копите на неё.</string>
+    <string name="finance_deposit_action">Пополнить</string>
+    <string name="finance_purchased_action">Куплено!</string>
+    <string name="finance_delete_goal_desc">Удалить копилку</string>
+    <string name="finance_new_account_title">Новый счёт</string>
+    <string name="finance_account_name_label">Название (например «Карта»)</string>
+    <string name="finance_add_account_action">Добавить счёт</string>
+    <string name="finance_new_transaction_title">Новая операция</string>
+    <string name="finance_amount_label">Сумма</string>
+    <string name="finance_account_label">Счёт</string>
+    <string name="finance_add_new_category">+ Новая</string>
+    <string name="finance_new_category_name_label">Название категории</string>
+    <string name="finance_add_category_action">Добавить категорию</string>
+    <string name="finance_new_goal_title">Новая копилка</string>
+    <string name="finance_goal_name_label">На что копим</string>
+    <string name="finance_goal_target_label">Сколько нужно накопить</string>
+    <string name="finance_create_goal_action">Создать копилку</string>
+    <string name="finance_deposit_title">Пополнить «%1$s»</string>
+    <string name="finance_deposit_from_account">Списать со счёта</string>
+    <string name="finance_deposit_action_confirm">Положить в копилку</string>
+    <string name="finance_goal_progress">%1$s из %2$s</string>
+
+    <!-- Навигация -->
+    <string name="day_nav_label">День</string>
+    <string name="onboarding_help_desc">Обучение</string>
+    <string name="scenarios_nav_desc">Сценарии</string>
+    <string name="settings_nav_desc">Настройки</string>
+
+    <!-- Обучение -->
+    <string name="onboarding_skip">Пропустить</string>
+    <string name="onboarding_start">Начать</string>
+    <string name="onboarding_next">Далее</string>
+
+    <string name="onboarding_1_title">Добро пожаловать в My Planner</string>
+    <string name="onboarding_1_desc">Планируйте свой день с красивым живым небом на фоне, а дела без точного времени держите в отдельном списке.</string>
+    <string name="onboarding_2_title">Список дел</string>
+    <string name="onboarding_2_desc">Дела, для которых пока не знаете точное время, живут в «Списке дел» как семечки. Когда решите, когда их делать — «посадите» их в план на день одной кнопкой.</string>
+    <string name="onboarding_3_title">От семечка до дерева</string>
+    <string name="onboarding_3_desc">Посаженное в план дело становится ростком, а когда вы отмечаете его выполненным — вырастает в дерево. В уголке экрана «День» растёт счётчик всех выращенных деревьев.</string>
+    <string name="onboarding_4_title">Время считается само</string>
+    <string name="onboarding_4_desc">Задайте начало, конец или длительность дела — остальное пересчитается автоматически, что бы вы ни поменяли.</string>
+    <string name="onboarding_5_title">Быстрый переход по датам</string>
+    <string name="onboarding_5_desc">Нажмите на дату вверху экрана «День» — откроется календарь, и можно сразу перейти на любой другой день.</string>
+    <string name="onboarding_6_title">Повторения под контролем</string>
+    <string name="onboarding_6_desc">Дело можно повторять через интервал, по дням недели, месяцам или годам. Повторения можно приостановить на время или остановить совсем.</string>
+    <string name="onboarding_7_title">Сценарии</string>
+    <string name="onboarding_7_desc">Соберите сценарий из нескольких шагов с нужными промежутками между ними — например «Стирка» — и запускайте его одной кнопкой. Начните печатать похожее название дела — и приложение само предложит запустить сценарий.</string>
+    <string name="onboarding_8_title">Перетаскивание и обмен</string>
+    <string name="onboarding_8_desc">Двигайте дела за ручку слева. Долгое нажатие на дело откроет меню, где можно поменять его местами с другим делом того же дня.</string>
+    <string name="onboarding_9_title">Напоминания</string>
+    <string name="onboarding_9_desc">Для каждого дела можно настроить, за сколько минут до начала придёт напоминание — включая свой вариант в минутах.</string>
+    <string name="onboarding_10_title">Свободное время и сон</string>
+    <string name="onboarding_10_desc">Приложение считает, сколько времени в дне осталось свободным. В настройках можно включить график сна, чтобы он тоже учитывался.</string>
+    <string name="onboarding_11_title">Финансы</string>
+    <string name="onboarding_11_desc">Ведите счета и операции во вкладке «Финансы», следите за тратами и копите на покупки в копилках — при пополнении в них падают монетки, а когда цель достигнута, копилка эффектно разбивается.</string>
+    <string name="onboarding_12_title">Если что-то забудете</string>
+    <string name="onboarding_12_desc">Это обучение всегда можно открыть заново — значок вопроса наверху экрана.</string>
+
+    <!-- Экран "День" -->
+    <string name="day_fab_add_task_desc">Добавить дело</string>
+    <string name="day_prev_desc">Предыдущий день</string>
+    <string name="day_next_desc">Следующий день</string>
+    <string name="day_open_calendar_desc">Открыть календарь</string>
+    <string name="day_go_action">Перейти</string>
+
+    <!-- Меню действий с делом -->
+    <string name="action_edit_task">Редактировать дело</string>
+    <string name="action_swap_with">Поменяться местами с делом...</string>
+    <string name="action_swap_candidate">%1$s (%2$s)</string>
+    <string name="action_skip_once">Пропустить только это вхождение</string>
+    <string name="action_pause_repeat">Приостановить повторения</string>
+    <string name="action_pause_question">На сколько дней приостановить?</string>
+    <string name="action_pause_days">%d дн.</string>
+    <string name="action_pause_until_resumed">До возобновления</string>
+    <string name="action_resume_repeat">Возобновить повторения</string>
+    <string name="action_stop_repeat_forever">Прекратить повторения совсем</string>
+    <string name="action_delete_series">Удалить дело полностью</string>
+
+    <!-- Сценарии -->
+    <string name="scenarios_title">Сценарии</string>
+    <string name="scenarios_back_desc">Назад к расписанию</string>
+    <string name="scenarios_new_desc">Новый сценарий</string>
+    <string name="scenarios_empty">Создайте сценарий: например «Стирка» — и он сам расставит нужные дела</string>
+    <string name="scenarios_run_desc">Запустить сценарий</string>
+    <string name="scenario_edit_new_title">Новый сценарий</string>
+    <string name="scenario_edit_title">Сценарий</string>
+    <string name="scenario_name_label">Название сценария, например «Стирка»</string>
+    <string name="scenario_save_action">Сохранить сценарий</string>
+    <string name="scenario_steps_label">Шаги сценария</string>
+    <string name="scenario_steps_hint">Для каждого шага укажите, через сколько минут от старта он начинается</string>
+    <string name="scenario_add_step_action">+ Добавить шаг</string>
+    <string name="scenario_step_number">Шаг %d</string>
+    <string name="scenario_delete_step_desc">Удалить шаг</string>
+    <string name="scenario_step_what_label">Что сделать</string>
+    <string name="scenario_step_offset_label">Через (мин):</string>
+    <string name="scenario_step_duration_label">Длительность (мин):</string>
+    <string name="run_scenario_title">Запустить «%s»</string>
+    <string name="run_scenario_desc">Шаги сценария расставятся в план начиная с выбранного момента</string>
+    <string name="run_scenario_quick_pick">Быстрый выбор</string>
+    <string name="run_scenario_now">Сейчас</string>
+    <string name="run_scenario_in_minutes">Через %d мин</string>
+    <string name="run_scenario_action">Запустить сценарий</string>
+
+    <!-- Настройки -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_sleep_title">График сна</string>
+    <string name="settings_sleep_desc">Если включить, сон будет учитываться при подсчёте свободного времени за день</string>
+    <string name="settings_sleep_toggle">Учитывать сон</string>
+    <string name="settings_sleep_start_label">Отбой</string>
+    <string name="settings_sleep_end_label">Подъём</string>
+    <string name="settings_sleep_start_title">Время отбоя</string>
+    <string name="settings_sleep_end_title">Время подъёма</string>
+    <string name="settings_reminders_title">Напоминания по умолчанию</string>
+    <string name="settings_categories_title">Категории</string>
+    <string name="settings_delete_category_desc">Удалить категорию</string>
+    <string name="settings_new_category_label">Новая категория</string>
+    <string name="settings_add_category_action">Добавить категорию</string>
+    <string name="minutes_custom_option">Свой вариант</string>
+    <string name="minutes_label">Минут</string>
+    <string name="minutes_suffix">%d мин</string>
+
+    <!-- Редактирование дела -->
+    <string name="task_edit_new_title">Новое дело</string>
+    <string name="task_edit_title">Дело</string>
+    <string name="task_edit_title_label">Название дела</string>
+    <string name="task_edit_time_label">Время</string>
+    <string name="task_edit_start_label">Начало</string>
+    <string name="task_edit_end_label">Конец</string>
+    <string name="task_edit_repeat_label">Повторение</string>
+    <string name="task_edit_reminder_label">Напоминание</string>
+    <string name="scenario_suggestion_title">Есть сценарий «%s»</string>
+    <string name="scenario_suggestion_question">Запустить его вместо создания обычного дела?</string>
+    <string name="scenario_suggestion_run">Запустить сценарий</string>
+    <string name="scenario_suggestion_dismiss">Нет, обычное дело</string>
+    <string name="reminder_none">Без напоминания</string>
+    <string name="reminder_before_start_label">Минут до начала</string>
+    <string name="repeat_none">Не повторяется</string>
+    <string name="repeat_every">Каждые %1$d %2$s</string>
+    <string name="repeat_weekly">Еженедельно: %s</string>
+    <string name="repeat_monthly">Ежемесячно</string>
+    <string name="repeat_yearly">Ежегодно</string>
+    <string name="unit_minutes">мин</string>
+    <string name="unit_hours">ч</string>
+    <string name="unit_days">дн.</string>
+    <string name="unit_weeks">нед.</string>
+
+    <!-- Повторение -->
+    <string name="repeat_sheet_title">Повторение дела</string>
+    <string name="repeat_type_none">Нет</string>
+    <string name="repeat_type_interval">Через интервал</string>
+    <string name="repeat_type_weekly">По дням недели</string>
+    <string name="repeat_type_monthly">Ежемесячно</string>
+    <string name="repeat_type_yearly">Ежегодно</string>
+    <string name="repeat_every_label">Повторять каждые:</string>
+    <string name="repeat_days_of_week_label">Дни недели:</string>
+    <string name="repeat_end_label">Когда закончить:</string>
+    <string name="repeat_end_never">Никогда</string>
+    <string name="repeat_end_until_date">До даты</string>
+    <string name="repeat_end_count">N раз</string>
+
+    <string-array name="day_of_week_short">
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+        <item>Вс</item>
+    </string-array>
+
+    <plurals name="times_count">
+        <item quantity="one">%d раз</item>
+        <item quantity="few">%d раза</item>
+        <item quantity="many">%d раз</item>
+        <item quantity="other">%d раза</item>
+    </plurals>
+
+    <!-- Прочее -->
+    <string name="piggy_bank_desc">Копилка</string>
+    <string name="notification_task_fallback">Дело</string>
+    <string name="notification_upcoming_text">Скоро по плану: %s</string>
+
+    <!-- Таймлайн дня -->
+    <string name="free_time_badge">Свободно: %1$d ч %2$d мин</string>
+    <string name="trees_grown_badge_desc">Выращено деревьев</string>
+    <string name="task_block_drag_desc">Перетащить дело</string>
+    <string name="task_block_repeating_desc">Повторяется</string>
+    <string name="task_block_completed_desc">Дело выполнено</string>
+    <string name="task_block_mark_complete_desc">Отметить выполненным</string>
+
+    <plurals name="steps_count">
+        <item quantity="one">%d шаг</item>
+        <item quantity="few">%d шага</item>
+        <item quantity="many">%d шагов</item>
+        <item quantity="other">%d шага</item>
+    </plurals>
+
+    <plurals name="savings_goals_purchased_count">
+        <item quantity="one">Куплено: %d копилка</item>
+        <item quantity="few">Куплено: %d копилки</item>
+        <item quantity="many">Куплено: %d копилок</item>
+        <item quantity="other">Куплено: %d копилки</item>
+    </plurals>
+</resources>
