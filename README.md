@@ -39,7 +39,7 @@ Architecture follows an MVVM pattern, with per-screen ViewModels and a shared `V
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/my-planner.git
+   git clone https://github.com/icecreemka/MyPlannerApp.git
    ```
 2. Open the project in Android Studio and let it sync Gradle.
 3. Run the `app` configuration on an emulator or a device running Android 8.0+.
