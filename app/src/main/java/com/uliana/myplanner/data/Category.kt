@@ -3,15 +3,12 @@ package com.uliana.myplanner.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-/**
- * Категория дела. colorHex хранится как строка вида "#RRGGBB".
- */
 @Entity(tableName = "categories")
 data class Category(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val name: String,
     val colorHex: String,
-    val icon: String = "leaf" // ключ иконки, см. IconMapper
+    val icon: String = "leaf"
 )
 
 object DefaultCategories {

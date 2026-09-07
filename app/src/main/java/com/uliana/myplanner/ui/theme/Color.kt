@@ -2,7 +2,6 @@ package com.uliana.myplanner.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Ботанический пастельный палитра "садовый планировщик"
 val MossDeep = Color(0xFF3D5240)
 val SageGreen = Color(0xFF7C9885)
 val SageLight = Color(0xFFAFC3A6)

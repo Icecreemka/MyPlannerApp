@@ -268,8 +268,6 @@ private fun GoalCard(
     var breaking by remember { mutableStateOf(false) }
     var removed by remember { mutableStateOf(false) }
 
-    // Монетки "падают" именно тогда, когда накопленная сумма реально увеличилась
-    // (после подтверждения пополнения), а не в момент нажатия кнопки.
     LaunchedEffect(goal.savedAmount) {
         if (goal.savedAmount > previousSaved) {
             coinDropTrigger++

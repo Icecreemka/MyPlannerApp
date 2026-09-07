@@ -6,7 +6,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Заголовки — с засечками (тёплый, "рукописный дневник" тон), текст — гротеск для читаемости.
 private val HeadingFamily = FontFamily.Serif
 private val BodyFamily = FontFamily.SansSerif
 

@@ -3,9 +3,6 @@ package com.uliana.myplanner.domain
 import java.time.Duration
 import java.time.LocalDateTime
 
-/**
- * Логика "ставим два параметра из трёх — начало/конец/длительность — третий считается сам".
- */
 object TimeCalculator {
 
     data class Result(val start: LocalDateTime, val end: LocalDateTime, val durationMinutes: Long)
@@ -21,9 +18,6 @@ object TimeCalculator {
         return Result(start, start.plusMinutes(duration), duration)
     }
 
-    /**
-     * Перенос дела на новое время начала: длительность сохраняется, конец пересчитывается.
-     */
     fun moveKeepingDuration(newStart: LocalDateTime, durationMinutes: Long): Result =
         fromStartAndDuration(newStart, durationMinutes)
 }

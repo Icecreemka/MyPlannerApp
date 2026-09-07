@@ -4,13 +4,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 
-/**
- * Индивидуальное изменение одного вхождения повторяющегося дела:
- * перенос по времени, пропуск, отметка о выполнении — без изменения всей серии.
- *
- * originalStart — изначально рассчитанное (до переноса) время начала вхождения; служит
- * уникальным ключом, так как у дела может быть несколько вхождений в один день.
- */
 @Entity(tableName = "task_overrides")
 data class TaskOccurrenceOverride(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,

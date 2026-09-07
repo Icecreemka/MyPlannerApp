@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
 
     private val notificationPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { /* пользователь ответил */ }
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {  }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,6 @@ class MainActivity : ComponentActivity() {
         requestNotificationPermissionIfNeeded()
         requestExactAlarmPermissionIfNeeded()
 
-        // При первом запуске (и после установки) убеждаемся, что все напоминания запланированы.
         lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) {
             ReminderScheduler.rescheduleAll(applicationContext)
         }

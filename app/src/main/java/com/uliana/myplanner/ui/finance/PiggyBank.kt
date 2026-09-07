@@ -24,14 +24,6 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-/**
- * Копилка-свинка: заполняется снизу пропорционально прогрессу накопления, при пополнении
- * в неё "падают" монетки, а при покупке она с анимацией разбивается.
- *
- * @param coinDropTrigger увеличивайте это число каждый раз при пополнении — запускает анимацию монеток
- * @param breakTrigger выставьте true, когда цель отмечена купленной — запускает анимацию разбития
- * @param onBreakFinished вызывается, когда анимация разбития закончилась (можно убирать карточку)
- */
 @Composable
 fun PiggyBank(
     progress: Float,
@@ -62,7 +54,7 @@ fun PiggyBank(
     }
 
     Box(modifier = modifier.size(96.dp), contentAlignment = Alignment.Center) {
-        // Разлетающиеся "черепки" при разбитии
+
         if (showShards) {
             val shardCount = 8
             repeat(shardCount) { i ->
@@ -83,7 +75,6 @@ fun PiggyBank(
             }
         }
 
-        // Сама копилка: контур + залив снизу пропорционально прогрессу
         Box(
             modifier = Modifier
                 .size(72.dp)
@@ -114,7 +105,6 @@ fun PiggyBank(
             )
         }
 
-        // Монетки, падающие при пополнении
         if (coinDropTrigger > 0) {
             key(coinDropTrigger) {
                 CoinDrop(color = color)

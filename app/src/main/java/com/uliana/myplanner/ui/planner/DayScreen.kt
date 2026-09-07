@@ -129,10 +129,6 @@ fun DayScreen(
 
             Spacer(Modifier.height(8.dp))
 
-            // Само небо остаётся видимым в этой области — читаемость обеспечивают
-            // подписи часов и блоки дел, а не сплошная подложка на весь экран.
-            // Выполненные дела прошедших дней уже "выросли" и посчитаны в общий счётчик —
-            // на самом таймлайне прошлого дня они больше не показываются.
             val visibleOccurrences = remember(occurrences, date) {
                 if (date.isBefore(LocalDate.now())) occurrences.filterNot { it.isCompleted && it.task.fromBacklog } else occurrences
             }
@@ -184,15 +180,8 @@ fun DayScreen(
     }
 }
 
-/** Дело с рассчитанной колонкой: если дела накладываются по времени, они делят ширину пополам (или на N частей). */
 private data class LayoutedOccurrence(val occurrence: TaskOccurrence, val column: Int, val columnCount: Int)
 
-/**
- * Раскладывает дела по колонкам: пересекающиеся по времени дела автоматически становятся
- * в соседние колонки (половина ширины на двоих, треть на троих и т.д.), не пересекающиеся
- * по времени — занимают всю ширину. Благодаря этому перетаскивание одного дела поверх
- * времени другого сразу показывает оба рядом, без ручной настройки места.
- */
 private fun layoutOccurrences(occurrences: List<TaskOccurrence>): List<LayoutedOccurrence> {
     val sorted = occurrences.sortedBy { it.start }
     val result = mutableListOf<LayoutedOccurrence>()
@@ -272,7 +261,7 @@ private fun DayTimeline(
                 .verticalScroll(scrollState)
         ) {
             Box(modifier = Modifier.fillMaxWidth().height(totalHeight)) {
-                // Сетка часов
+
                 Column(Modifier.fillMaxWidth()) {
                     for (hour in 0..23) {
                         Row(Modifier.fillMaxWidth().height(HOUR_HEIGHT)) {
@@ -304,7 +293,6 @@ private fun DayTimeline(
                     }
                 }
 
-                // Линия текущего времени
                 if (date == LocalDate.now()) {
                     val now = LocalDateTime.now()
                     val nowMinutes = now.hour * 60 + now.minute
@@ -319,7 +307,6 @@ private fun DayTimeline(
                     )
                 }
 
-                // Дела поверх сетки: каждое в своей колонке (если накладывается по времени — рядом с другими)
                 val taskAreaWidth = fullWidth - LABEL_COLUMN_WIDTH - TIMELINE_LEFT_GAP
                 layouted.forEach { item ->
                     val occ = item.occurrence
@@ -362,9 +349,6 @@ private fun DayTimeline(
                                 change.consume()
                                 dragDeltaMinutes += dragAmount.y / pxPerMinute
 
-                                // Автопрокрутка: если тянем дело к верхнему или нижнему краю
-                                // видимой области, сама область прокручивается, а дело
-                                // продолжает двигаться дальше по времени вместе с ней.
                                 val itemTopPx = (startMinutes + dragDeltaMinutes) * pxPerMinute
                                 val itemBottomPx = itemTopPx + durationMinutes * pxPerMinute
                                 val viewportTopPx = scrollState.value.toFloat()

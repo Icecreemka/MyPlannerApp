@@ -33,10 +33,6 @@ import java.time.format.DateTimeFormatter
 
 private val timeFmt = DateTimeFormatter.ofPattern("HH:mm")
 
-/**
- * Значок отметки выполнения: росток/дерево — только для дел, "посаженных" из Списка дел;
- * для остальных дел, созданных прямо в планировщике, обычная галочка.
- */
 private fun completionIcon(occurrence: TaskOccurrence): androidx.compose.ui.graphics.vector.ImageVector =
     if (occurrence.task.fromBacklog) {
         if (occurrence.isCompleted) Icons.Filled.Park else Icons.Filled.Grass
@@ -92,13 +88,6 @@ fun TreesGrownBadge(count: Int, modifier: Modifier = Modifier) {
     }
 }
 
-/**
- * Блок дела на сетке-таймлайне: позиционируется абсолютно снаружи (offset/height по времени),
- * здесь только его внутреннее содержимое.
- *
- * Слева — отдельная "ручка" для перетаскивания (dragHandleModifier вешается только на неё),
- * чтобы перетаскивание не конфликтовало с обычным тапом/долгим нажатием на остальной части карточки.
- */
 @Composable
 fun TimelineTaskBlock(
     occurrence: TaskOccurrence,
@@ -121,7 +110,7 @@ fun TimelineTaskBlock(
         border = androidx.compose.foundation.BorderStroke(1.2.dp, categoryColor.copy(alpha = 0.7f))
     ) {
         Row(modifier = Modifier.fillMaxSize()) {
-            // Ручка для перетаскивания
+
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
@@ -153,9 +142,7 @@ fun TimelineTaskBlock(
                 Spacer(Modifier.width(6.dp))
 
                 if (compact) {
-                    // Короткие дела (полчаса и меньше): всё в одну строку — название,
-                    // время и стадию выносим В СТОРОНУ, а не друг под друга, чтобы
-                    // текст не обрезался по высоте.
+
                     Text(
                         text = occurrence.task.title,
                         style = MaterialTheme.typography.labelSmall,

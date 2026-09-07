@@ -52,7 +52,6 @@ class Converters {
             gson.fromJson(json, RepeatRuleGsonShape::class.java).toRepeatRule()
         }.getOrDefault(RepeatRule())
 
-    // Промежуточная форма для корректной (де)сериализации enum-Set<DayOfWeek> через Gson.
     private data class RepeatRuleGsonShape(
         val type: RepeatType = RepeatType.NONE,
         val intervalAmount: Int = 1,

@@ -7,9 +7,6 @@ import com.uliana.myplanner.data.TaskOccurrenceOverride
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-/**
- * Конкретное вхождение дела на временной шкале — то, что реально рисуется в планировщике.
- */
 data class TaskOccurrence(
     val task: TaskEntity,
     val originalStart: LocalDateTime,
@@ -24,10 +21,6 @@ data class TaskOccurrence(
 
 object RepeatEngine {
 
-    /**
-     * Генерирует все вхождения дела в диапазоне [rangeStart, rangeEnd] (включительно),
-     * применяя паузы из RepeatRule и индивидуальные overrides.
-     */
     fun occurrencesInRange(
         task: TaskEntity,
         overrides: List<TaskOccurrenceOverride>,
@@ -59,7 +52,7 @@ object RepeatEngine {
                         IntervalUnit.WEEKS -> dt.plusWeeks(rule.intervalAmount.toLong())
                     }
                 }
-                // Защита от бесконечного цикла: ограничиваем количество итераций.
+
                 var safety = 0
                 while (current.isBefore(windowEnd) && safety < 20000) {
                     safety++

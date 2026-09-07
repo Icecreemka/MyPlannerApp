@@ -6,10 +6,6 @@ import com.uliana.myplanner.data.TaskEntity
 import java.time.LocalDateTime
 import java.util.UUID
 
-/**
- * Превращает сценарий (набор шагов со смещениями) в конкретные дела на временной шкале,
- * начиная с указанного момента запуска.
- */
 object ScenarioEngine {
 
     fun instantiate(scenario: ScenarioWithSteps, startAt: LocalDateTime): List<TaskEntity> {

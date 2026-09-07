@@ -29,12 +29,6 @@ data class TaskEditState(
     val isNew: Boolean = true
 )
 
-/**
- * Редактор дела: начало/конец/длительность всегда синхронизированы — при изменении
- * любого одного значения два других пересчитываются сами, без явного выбора "режима".
- * Правило: меняешь начало — сдвигается конец (длительность не трогаем);
- * меняешь конец — пересчитывается длительность; меняешь длительность — сдвигается конец.
- */
 class TaskEditViewModel(
     application: Application,
     private val repository: PlannerRepository,
@@ -83,14 +77,12 @@ class TaskEditViewModel(
 
     fun updateDate(d: LocalDate) { _state.value = _state.value.copy(date = d) }
 
-    /** Меняем начало — длительность остаётся прежней, конец пересчитывается. */
     fun updateStartTime(t: LocalTime) {
         val s = _state.value
         val newEnd = t.plusMinutes(s.durationMinutes)
         _state.value = s.copy(startTime = t, endTime = newEnd)
     }
 
-    /** Меняем конец — начало остаётся прежним, длительность пересчитывается (минимум 5 минут). */
     fun updateEndTime(t: LocalTime) {
         val s = _state.value
         val startDt = LocalDateTime.of(s.date, s.startTime)
@@ -100,7 +92,6 @@ class TaskEditViewModel(
         _state.value = s.copy(endTime = t, durationMinutes = duration)
     }
 
-    /** Меняем длительность — начало остаётся прежним, конец пересчитывается. */
     fun updateDuration(minutes: Long) {
         val s = _state.value
         val safeMinutes = minutes.coerceAtLeast(5)

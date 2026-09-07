@@ -16,10 +16,6 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-/**
- * Выбор даты и времени запуска сценария — с быстрыми вариантами ("сейчас", "через 30 мин")
- * и полноценным календарём + колесом времени, если нужно любое другое время.
- */
 @Composable
 fun RunScenarioSheet(
     scenarioName: String,

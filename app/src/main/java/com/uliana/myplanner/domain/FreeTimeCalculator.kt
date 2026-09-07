@@ -3,15 +3,10 @@ package com.uliana.myplanner.domain
 import com.uliana.myplanner.data.SleepSchedule
 import java.time.LocalDate
 
-/**
- * Считает оставшееся свободное время за день (в минутах), учитывая занятые делами
- * промежутки и, по желанию пользователя, график сна (тогда сон тоже "съедает" день).
- */
 object FreeTimeCalculator {
 
     private const val MINUTES_IN_DAY = 24 * 60
 
-    /** Простой промежуток в минутах от начала суток [0, 1440]. Может выходить за границы дня — будет обрезан. */
     private data class MinuteRange(val startMin: Int, val endMin: Int)
 
     fun freeMinutesForDay(
@@ -47,15 +42,14 @@ object FreeTimeCalculator {
         return (java.time.Duration.between(dayStart, clamped).toMinutes()).toInt()
     }
 
-    /** Сон может занимать конец предыдущей ночи (00:00..sleepEnd) и начало этой ночи (sleepStart..24:00). */
     private fun sleepRangesForDay(schedule: SleepSchedule): List<MinuteRange> {
         val startMin = schedule.sleepStart.hour * 60 + schedule.sleepStart.minute
         val endMin = schedule.sleepEnd.hour * 60 + schedule.sleepEnd.minute
         return if (startMin <= endMin) {
-            // Сон в пределах одного дня (например дневной сон 13:00-14:00)
+
             listOf(MinuteRange(startMin, endMin))
         } else {
-            // Сон переходит через полночь: хвост утром + начало вечером
+
             listOf(
                 MinuteRange(0, endMin),
                 MinuteRange(startMin, MINUTES_IN_DAY)

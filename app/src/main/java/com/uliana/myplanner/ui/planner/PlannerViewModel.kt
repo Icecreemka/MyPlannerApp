@@ -33,7 +33,6 @@ class PlannerViewModel(
         FreeTimeCalculator.freeMinutesForDay(date, occ, sleep)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 24 * 60L)
 
-    /** Сколько дел "выросло" до конца — для значка в уголке экрана. */
     val treesGrown = repository.settingsRepository.treesGrown
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0)
 
@@ -43,8 +42,7 @@ class PlannerViewModel(
     fun toggleComplete(occurrence: TaskOccurrence) = viewModelScope.launch {
         val nowCompleted = !occurrence.isCompleted
         repository.markOccurrenceCompleted(occurrence, nowCompleted)
-        // Счётчик "выращенных деревьев" считает только дела, посаженные из Списка дел —
-        // обычные дела планировщика отмечаются простой галочкой и в счётчик не идут.
+
         if (occurrence.task.fromBacklog) {
             if (nowCompleted) {
                 repository.settingsRepository.incrementTreesGrown()
@@ -58,23 +56,11 @@ class PlannerViewModel(
         repository.skipOccurrence(occurrence)
     }
 
-    /**
-     * Просто переносит дело на новое время (длительность сохраняется, конец пересчитывается).
-     * Двигается ТОЛЬКО это дело — даже если оно накладывается по времени на другое, оно не
-     * трогается: оба дела в этом случае просто показываются рядом (см. layoutOccurrences в
-     * DayScreen). Никаких скрытых побочных перемещений других дел.
-     */
     fun moveOccurrence(occurrence: TaskOccurrence, newStart: LocalDateTime) = viewModelScope.launch {
         repository.moveOccurrence(occurrence, newStart)
         rescheduleReminder(occurrence.task.id)
     }
 
-    /**
-     * Явный обмен местами двух дел (вызывается из меню долгого нажатия, а не автоматически
-     * при перетаскивании — так это никогда не происходит случайно). Сохраняет зазор между
-     * ними: если между делами была пауза — она останется такой же, если шли впритык —
-     * останутся впритык.
-     */
     fun swapOccurrences(occurrence: TaskOccurrence, other: TaskOccurrence) = viewModelScope.launch {
         val (slotA, slotB) = if (!other.start.isBefore(occurrence.start)) occurrence to other else other to occurrence
         val gapMinutes = java.time.Duration.between(slotA.end, slotB.start).toMinutes()
@@ -110,7 +96,7 @@ class PlannerViewModel(
 
     private suspend fun rescheduleReminder(taskId: Long) {
         val task = getApplication<Application>().let {
-            // Лёгкий доступ к БД напрямую для получения актуального шаблона дела.
+
             com.uliana.myplanner.data.AppDatabase.getInstance(it).taskDao().getById(taskId)
         }
         if (task != null) ReminderScheduler.scheduleNextForTask(getApplication<android.app.Application>(), task)

@@ -20,15 +20,6 @@ import java.time.LocalTime
 import kotlin.math.abs
 import kotlin.math.round
 
-/**
- * Колонка-барабан со значениями, которая крутится и залипает на центральном элементе —
- * похоже на выбор времени в интерфейсах Samsung, вместо циферблата Material.
- *
- * "Какой пункт сейчас по центру" считается аналитически по позиции скролла
- * (firstVisibleItemIndex + firstVisibleItemScrollOffset / itemHeight), а не сравнением
- * пиксельных офсетов видимых элементов — это было источником рассинхронизации между
- * подсветкой и реальным выбором.
- */
 @Composable
 private fun WheelColumn(
     values: List<Int>,
@@ -57,11 +48,7 @@ private fun WheelColumn(
                 if (inProgress) return@collect
                 val exact = exactCenteredIndex()
                 val target = round(exact).toInt().coerceIn(0, values.lastIndex)
-                // Сначала сообщаем наружу выбранное значение — и только потом (не блокируя
-                // этим обновление) доворачиваем колесо до идеального центра. Раньше было
-                // наоборот: если нажать "Готово" во время доворота (а с мелким шагом, как
-                // у минут, доворот нужен намного чаще, чем у часов), успевало подтвердиться
-                // ещё старое значение.
+
                 values.getOrNull(target)?.let { value ->
                     if (value != selectedValue) onValueChange(value)
                 }

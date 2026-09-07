@@ -8,10 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-/**
- * Ряд чипов, который не сжимает текст и не переносит строки, а листается в сторону,
- * если элементы не помещаются на экране.
- */
 @Composable
 fun <T> ScrollableChipRow(
     items: List<T>,

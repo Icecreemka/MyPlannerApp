@@ -38,7 +38,6 @@ class ReminderReceiver : BroadcastReceiver() {
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.notify(taskId.toInt(), notification)
 
-        // Планируем следующее вхождение этого дела.
         val pendingResult = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {

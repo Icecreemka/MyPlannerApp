@@ -21,10 +21,6 @@ import kotlin.math.PI
 import kotlin.math.sin
 import kotlin.random.Random
 
-/**
- * Небо, которое плавно меняет цвет в зависимости от времени суток: рассвет, день,
- * закат, ночь — вместо статичного фона. Изюминка главного экрана "План на день".
- */
 private data class SkyKeyframe(val hourOfDay: Float, val top: Color, val mid: Color, val bottom: Color)
 
 private val skyKeyframes = listOf(
@@ -93,8 +89,6 @@ fun SkyBackground(modifier: Modifier = Modifier, content: @Composable BoxScope.(
                 }
             }
 
-            // Солнце/луна: дуга от горизонта (внизу) до высшей точки в полдень/полночь.
-            // Держим её в нижней части неба, чтобы не пряталась за плашкой с датой сверху.
             val isSunVisible = hourFraction in 5.5f..20.5f
             val cycleStart = if (isSunVisible) 5.5f else 20.5f
             val cycleEnd = if (isSunVisible) 20.5f else 29.5f

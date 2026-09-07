@@ -33,8 +33,6 @@ interface TaskDao {
     @Query("DELETE FROM tasks WHERE scenarioRunId = :runId")
     suspend fun deleteByScenarioRun(runId: String)
 
-    // Overrides
-
     @Query("SELECT * FROM task_overrides")
     fun observeAllOverrides(): Flow<List<TaskOccurrenceOverride>>
 

@@ -19,7 +19,6 @@ class PlannerRepository(
     val scenarios: Flow<List<ScenarioWithSteps>> = scenarioDao.observeAllWithSteps()
     val backlogTasks: Flow<List<BacklogTaskEntity>> = backlogDao.observeAll()
 
-    /** Все вхождения дел в диапазоне дат — то, что реально показывается в планировщике. */
     fun occurrencesInRange(rangeStart: LocalDate, rangeEnd: LocalDate): Flow<List<TaskOccurrence>> =
         combine(taskDao.observeAll(), taskDao.observeAllOverrides()) { tasks, overrides ->
             val overridesByTask = overrides.groupBy { it.taskId }
@@ -33,8 +32,6 @@ class PlannerRepository(
             }
         }
 
-    // ---------- Дела ----------
-
     suspend fun createTask(task: TaskEntity): Long = taskDao.insert(task)
 
     suspend fun updateTaskTemplate(task: TaskEntity) = taskDao.update(task)
@@ -44,7 +41,6 @@ class PlannerRepository(
         taskDao.delete(task)
     }
 
-    /** Перенос одного конкретного вхождения (для NONE — правит сам шаблон, для повторов — override). */
     suspend fun moveOccurrence(occurrence: TaskOccurrence, newStart: LocalDateTime) {
         val newEnd = newStart.plusMinutes(occurrence.durationMinutes)
         if (occurrence.task.repeatRule.type == RepeatType.NONE) {
@@ -81,7 +77,6 @@ class PlannerRepository(
         )
     }
 
-    /** Приостановить повторения на промежуток [from, until] (until = null -> пока не возобновят). */
     suspend fun pauseRepeat(task: TaskEntity, from: LocalDate, until: LocalDate?) {
         taskDao.update(task.copy(repeatRule = task.repeatRule.copy(pausedFrom = from, pausedUntil = until)))
     }
@@ -90,18 +85,13 @@ class PlannerRepository(
         taskDao.update(task.copy(repeatRule = task.repeatRule.copy(pausedFrom = null, pausedUntil = null)))
     }
 
-    /** Полностью прекратить повторения начиная с указанной даты. */
     suspend fun stopRepeatForever(task: TaskEntity, fromDate: LocalDate) {
         taskDao.update(task.copy(repeatRule = task.repeatRule.copy(isStoppedForever = true, stopAfterDate = fromDate)))
     }
 
-    // ---------- Категории ----------
-
     suspend fun createCategory(category: Category) = categoryDao.insert(category)
     suspend fun updateCategory(category: Category) = categoryDao.update(category)
     suspend fun deleteCategory(category: Category) = categoryDao.delete(category)
-
-    // ---------- Сценарии ----------
 
     suspend fun createScenario(scenario: ScenarioEntity, steps: List<ScenarioStepEntity>) {
         val id = scenarioDao.insertScenario(scenario)
@@ -116,20 +106,16 @@ class PlannerRepository(
 
     suspend fun deleteScenario(scenario: ScenarioEntity) = scenarioDao.deleteScenario(scenario)
 
-    /** Запускает сценарий: создаёт все дела сценария в планировщике начиная с указанного момента. */
     suspend fun runScenario(scenarioId: Long, startAt: LocalDateTime): List<Long> {
         val withSteps = scenarioDao.getScenarioWithSteps(scenarioId) ?: return emptyList()
         val tasks = ScenarioEngine.instantiate(withSteps, startAt)
         return taskDao.insertAll(tasks)
     }
 
-    // ---------- Список дел без времени ----------
-
     suspend fun addBacklogTask(task: BacklogTaskEntity): Long = backlogDao.insert(task)
     suspend fun updateBacklogTask(task: BacklogTaskEntity) = backlogDao.update(task)
     suspend fun deleteBacklogTask(task: BacklogTaskEntity) = backlogDao.delete(task)
 
-    /** "Сажает" дело из списка в расписание на конкретные дату/время и убирает его из списка. */
     suspend fun sendBacklogTaskToSchedule(
         backlogTask: BacklogTaskEntity,
         start: LocalDateTime,

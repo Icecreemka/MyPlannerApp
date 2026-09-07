@@ -17,7 +17,7 @@ data class SleepSchedule(
     val sleepStart: LocalTime = LocalTime.of(23, 0),
     val sleepEnd: LocalTime = LocalTime.of(7, 0)
 ) {
-    /** Длительность сна в минутах, корректно считает переход через полночь. */
+
     val durationMinutes: Long
         get() {
             val startMin = sleepStart.hour * 60 + sleepStart.minute
@@ -50,7 +50,6 @@ class SettingsRepository(private val context: Context) {
 
     val hasSeenOnboarding: Flow<Boolean> = context.dataStore.data.map { it[Keys.ONBOARDING_SEEN] ?: false }
 
-    /** Сколько дел "выросло" до конца — счётчик выполненных дел за всё время. */
     val treesGrown: Flow<Int> = context.dataStore.data.map { it[Keys.TREES_GROWN] ?: 0 }
 
     suspend fun setOnboardingSeen(seen: Boolean) {

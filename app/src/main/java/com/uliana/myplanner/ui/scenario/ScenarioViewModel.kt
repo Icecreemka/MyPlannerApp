@@ -28,7 +28,6 @@ class ScenarioViewModel(
         repository.deleteScenario(scenario)
     }
 
-    /** Запускает сценарий: сразу расставляет все его шаги в планировщик и планирует напоминания. */
     fun runScenario(scenarioId: Long, startAt: LocalDateTime, onDone: () -> Unit) = viewModelScope.launch {
         val ids = repository.runScenario(scenarioId, startAt)
         ids.forEach { id ->

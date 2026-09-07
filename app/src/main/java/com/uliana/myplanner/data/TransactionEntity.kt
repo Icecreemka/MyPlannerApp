@@ -6,7 +6,6 @@ import java.time.LocalDate
 
 enum class TransactionType { EXPENSE, INCOME }
 
-/** Одна запись о трате или доходе, привязанная к счёту. */
 @Entity(tableName = "finance_transactions")
 data class TransactionEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,

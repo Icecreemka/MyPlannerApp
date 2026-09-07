@@ -13,12 +13,6 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 
-/**
- * "Скользящий" планировщик напоминаний: так как повторяющиеся дела не хранят каждое
- * вхождение в базе, для каждого дела всегда держим запланированным только БЛИЖАЙШЕЕ
- * будущее напоминание. После того как оно сработает (ReminderReceiver) или после любого
- * изменения дела, планируется следующее.
- */
 object ReminderScheduler {
 
     const val EXTRA_TASK_ID = "extra_task_id"
@@ -84,7 +78,7 @@ object ReminderScheduler {
     fun rescheduleAll(context: Context) {
         val db = AppDatabase.getInstance(context)
         kotlinx.coroutines.runBlocking {
-            // Однократное считывание текущего списка задач.
+
             val snapshot = db.taskDao().observeAll().first()
             snapshot.forEach { scheduleNextForTask(context, it) }
         }

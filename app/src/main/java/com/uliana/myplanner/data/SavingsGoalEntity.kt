@@ -1,6 +1,5 @@
 package com.uliana.myplanner.data
 
-/** Копилка / цель накопления — она же "запланированная покупка": копим на что-то конкретное. */
 @androidx.room.Entity(tableName = "savings_goals")
 data class SavingsGoalEntity(
     @androidx.room.PrimaryKey(autoGenerate = true) val id: Long = 0,

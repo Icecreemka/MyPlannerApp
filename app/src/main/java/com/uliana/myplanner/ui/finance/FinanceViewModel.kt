@@ -66,7 +66,6 @@ class FinanceViewModel(
         repository.deleteSavingsGoal(goal)
     }
 
-    /** Кладёт деньги в копилку (с анимацией монеток на стороне UI) и списывает их со счёта. */
     fun depositToGoal(goal: SavingsGoalEntity, amount: Double, fromAccountId: Long?, onDone: () -> Unit) =
         viewModelScope.launch {
             if (amount > 0.0) {
@@ -75,7 +74,6 @@ class FinanceViewModel(
             onDone()
         }
 
-    /** Отмечает копилку купленной — UI после этого запускает анимацию разбития. */
     fun markGoalPurchased(goal: SavingsGoalEntity) = viewModelScope.launch {
         repository.markGoalPurchased(goal)
     }

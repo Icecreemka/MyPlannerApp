@@ -46,8 +46,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "my_planner.db"
                 ).addCallback(SeedCallback(context.applicationContext))
-                    // На этом этапе разработки схема ещё может меняться; при несовпадении
-                    // версии база просто пересоздаётся, а не крашит приложение.
+
                     .fallbackToDestructiveMigration()
                     .build().also { INSTANCE = it }
             }

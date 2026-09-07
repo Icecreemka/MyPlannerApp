@@ -3,7 +3,6 @@ package com.uliana.myplanner.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-/** Категория трат/доходов (Еда, Транспорт, Зарплата и т.д.) — отдельная от категорий дел. */
 @Entity(tableName = "finance_categories")
 data class FinanceCategoryEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,

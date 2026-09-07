@@ -11,10 +11,6 @@ import com.uliana.myplanner.ui.theme.Parchment
 import com.uliana.myplanner.ui.theme.ParchmentDark
 import com.uliana.myplanner.ui.theme.SageLight
 
-/**
- * Мягкий фон-"рассвет": лёгкий градиент сверху вниз, как небо над садом.
- * Используется на всех основных экранах для единого узнаваемого стиля.
- */
 @Composable
 fun GardenBackground(content: @Composable () -> Unit) {
     Box(

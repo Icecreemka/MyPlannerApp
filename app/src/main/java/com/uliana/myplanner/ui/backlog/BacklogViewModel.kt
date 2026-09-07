@@ -36,7 +36,6 @@ class BacklogViewModel(
         repository.deleteBacklogTask(task)
     }
 
-    /** "Сажает" дело из списка в расписание на выбранные дату/время. */
     fun sendToSchedule(task: BacklogTaskEntity, start: LocalDateTime, durationMinutes: Long, onDone: () -> Unit) =
         viewModelScope.launch {
             val taskId = repository.sendBacklogTaskToSchedule(task, start, durationMinutes)

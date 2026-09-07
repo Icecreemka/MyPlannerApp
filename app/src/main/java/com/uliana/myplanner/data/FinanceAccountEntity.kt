@@ -3,7 +3,6 @@ package com.uliana.myplanner.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-/** Счёт (наличные, карта, вклад и т.д.) с текущим балансом. */
 @Entity(tableName = "finance_accounts")
 data class FinanceAccountEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
